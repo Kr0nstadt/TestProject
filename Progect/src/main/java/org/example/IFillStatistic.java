@@ -8,4 +8,5 @@ public interface IFillStatistic {
     public void GetSum();
     public void GetMid();
     public void GetSize();
+    public String Statistic();
 }
