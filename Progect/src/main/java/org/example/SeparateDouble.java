@@ -19,7 +19,8 @@ public class SeparateDouble implements ICanSeparate<Double>{
     public Double getValue(String txt) {
         Double res = 0.0;
         if(txt == null||
-                txt.isEmpty() ||this.IsMath(txt)){
+                txt.isEmpty() ||
+                !this.IsMath(txt)){
             return res;
         }
         else {

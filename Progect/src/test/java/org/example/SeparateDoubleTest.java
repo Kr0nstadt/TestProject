@@ -83,6 +83,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertFalse(res);
+        assertEquals(0.0, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch7(){

@@ -10,17 +10,25 @@ public class SeparateLong implements ICanSeparate<Long> {
             return false;
         }
         else{
-            return Pattern.matches("^-?d+$",txt);
+            return Pattern.matches("^-?\\d+$",txt);
         }
     }
 
     @Override
     public Long getValue(String txt) {
         Long res = 0L;
-        try{
-            res = Long.parseLong(txt);
+        if(txt == null||
+                txt.isEmpty()||
+                txt.length() == 0 ||
+                !this.IsMath(txt)){
+            return res;
         }
-        catch (NumberFormatException e) {}
-        return res;
+        else {
+            try {
+                res = Long.parseLong(txt);
+            } catch (NumberFormatException e) {
+            }
+            return res;
+        }
     }
 }
