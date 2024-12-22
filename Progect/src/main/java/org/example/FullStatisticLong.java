@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
 
-public class FullStaticticLong implements IFillStatistic{
-    public FullStaticticLong(Separator separate){
+public class FullStatisticLong implements IFillStatistic{
+    public FullStatisticLong(Separator separate){
         _list = new ArrayList<>();
         _list = separate.GetLong();
         GetMax();

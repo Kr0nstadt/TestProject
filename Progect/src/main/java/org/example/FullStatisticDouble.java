@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
 
-public class FullStaticticDouble implements IFillStatistic{
-    public FullStaticticDouble(Separator separate){
+public class FullStatisticDouble implements IFillStatistic{
+    public FullStatisticDouble(Separator separate){
         _list = new ArrayList<>();
         _list = separate.GetDouble();
         GetMax();
