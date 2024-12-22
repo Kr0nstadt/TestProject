@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
 
-public class FullStaticticDouble implements IFillStatistic{
-    public FullStaticticDouble(Separator separate){
+public class FullStaticticLong implements IFillStatistic{
+    public FullStaticticLong(Separator separate){
         _list = new ArrayList<>();
-        _list = separate.GetDouble();
+        _list = separate.GetLong();
         GetMax();
         GetMin();
         GetMid();
@@ -17,22 +17,22 @@ public class FullStaticticDouble implements IFillStatistic{
 
     @Override
     public void GetMin() {
-        _infomin = _list.stream().min(Double::compare).orElse(null).toString();
+        _infomin = _list.stream().min(Long::compare).orElse(null).toString();
     }
 
     @Override
     public void GetMax() {
-        _infomax = _list.stream().max(Double::compare).orElse(null).toString();
+        _infomax = _list.stream().max(Long::compare).orElse(null).toString();
     }
 
     @Override
     public void GetSum() {
-        _infosum = ((Double)_list.stream().mapToDouble(Double::doubleValue).sum()).toString();
+        _infosum = ((Long)_list.stream().mapToLong(Long::longValue).sum()).toString();
     }
 
     @Override
     public void GetMid() {
-        OptionalDouble average = _list.stream().mapToDouble(Double::doubleValue).average();
+        OptionalDouble average = _list.stream().mapToLong(Long::longValue).average();
         var res = average.isPresent() ? average.getAsDouble() : null;
         _infomid =  res.toString();
     }
@@ -44,7 +44,7 @@ public class FullStaticticDouble implements IFillStatistic{
 
     @Override
     public String Statistic(){
-        String txt = "\nСтатистика вещественных чисел\n";
+        String txt = "\nСтатистика чисел\n";
         txt += "------------------------------------------\n";
         txt += "Минимальное значение : " + _infomin;
         txt += "\nМaксимальное значение : " + _infomax;
@@ -60,5 +60,5 @@ public class FullStaticticDouble implements IFillStatistic{
     private String _infomid;
     private String _infosize;
 
-    private List<Double> _list;
+    private List<Long> _list;
 }
