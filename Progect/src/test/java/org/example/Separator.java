@@ -10,6 +10,15 @@ public class Separator {
         _stringList = new ArrayList<>();
         this.Separate(lines);
     }
+    public List<Long> GetLong(){
+        return  _longList;
+    }
+    public List<Double> GetDouble(){
+        return  _doubleList;
+    }
+    public List<String> GetString(){
+        return _stringList;
+    }
     private void Separate(List<String> lines){
         SeparateLong sapint = new SeparateLong();
         SeparateDouble sapflo = new SeparateDouble();
