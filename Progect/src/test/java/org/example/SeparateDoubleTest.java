@@ -13,6 +13,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertFalse(res);
+        assertEquals(0.0, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatchEmpty(){
@@ -22,6 +23,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertFalse(res);
+        assertEquals(0.0, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch1(){
@@ -31,6 +33,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(1.73, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch2(){
@@ -40,6 +43,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(-0.5, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch3(){
@@ -49,6 +53,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(+3.14E10, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch4(){
@@ -58,6 +63,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(2.71828e-5, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch5(){
@@ -67,6 +73,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(1.0E0, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch6(){
@@ -85,6 +92,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(.456, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch8(){
@@ -94,6 +102,7 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertFalse(res);
+        assertEquals(0.0, separate.getValue(txt));
     }
     @Test
     public void TestSeparateDoubleIsMatch9(){
@@ -103,5 +112,6 @@ class SeparateDoubleTest {
         boolean res = separate.IsMath(txt);
 
         assertTrue(res);
+        assertEquals(1.73E12, separate.getValue(txt));
     }
 }

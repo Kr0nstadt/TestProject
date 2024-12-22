@@ -18,10 +18,16 @@ public class SeparateDouble implements ICanSeparate<Double>{
     @Override
     public Double getValue(String txt) {
         Double res = 0.0;
-        try{
-            res = Double.parseDouble(txt);
+        if(txt == null||
+                txt.isEmpty() ||this.IsMath(txt)){
+            return res;
         }
-        catch (NumberFormatException e){}
-        return res;
+        else {
+            try {
+                res = Double.parseDouble(txt);
+            } catch (NumberFormatException e) {
+            }
+            return res;
+        }
     }
 }
