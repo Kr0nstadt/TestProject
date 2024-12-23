@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 public class SeparateDouble implements ICanSeparate<Double>{
     @Override
-    public boolean IsMath(String txt) {
+    public boolean isMatch(String txt) {
         if(txt == null||
                 txt.isEmpty()||
                 txt.length() == 0){
@@ -20,7 +20,7 @@ public class SeparateDouble implements ICanSeparate<Double>{
         Double res = 0.0;
         if(txt == null||
                 txt.isEmpty() ||
-                !this.IsMath(txt)){
+                !this.isMatch(txt)){
             return res;
         }
         else {

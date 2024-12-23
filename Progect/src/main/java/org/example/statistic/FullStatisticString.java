@@ -8,44 +8,42 @@ import java.util.List;
 
 public class FullStatisticString implements IStringFullStaticstic {
     public FullStatisticString(Separator separator){
-        _list = new ArrayList<>();
-        _list = separator.GetString().stream()
+        list = new ArrayList<>();
+        list = separator.GetString().stream()
                 .sorted(Comparator.comparingInt(String::length)).toList();
-        _infomin = _list.getFirst().length();
-        _infomax = _list.getLast().length();
-        _infosize = _list.size();
+        infomin = list.getFirst().length();
+        infomax = list.getLast().length();
+        infosize = list.size();
 
     }
 
     @Override
-    public int getMinLength() {
-        return _infomin;
+    public Integer getMinLength() {
+        return infomin;
     }
 
     @Override
-    public int getMaxLength() {
-        return _infomax;
+    public Integer getMaxLength() {
+        return infomax;
     }
 
     @Override
-    public int getCountElements() {
-        return _infosize;
+    public Integer getCountElements() {
+        return infosize;
     }
 
     @Override
-    public String Statistic() {
+    public String statistic() {
         String txt = "\nСтатистика строк \n";
         txt += "------------------------------------------\n";
-        txt += "Минимальное значение : " + _infomin;
-        txt += "\nМaксимальное значение : " + _infomax;
-        txt += "\nКоличество значений : " + _infosize;
+        txt += "Минимальное значение : " + infomin;
+        txt += "\nМaксимальное значение : " + infomax;
+        txt += "\nКоличество значений : " + infosize;
         return txt;
     }
-    private int _infomin;
-    private int _infomax;
-    private int _infosize;
+    private Integer infomin;
+    private Integer infomax;
+    private Integer infosize;
 
-    private List<String> _list;
-
-
+    private List<String> list;
 }

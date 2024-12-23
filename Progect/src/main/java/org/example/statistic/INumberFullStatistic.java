@@ -4,5 +4,5 @@ public interface INumberFullStatistic<T extends Number> extends ICountElementsSt
     T getMin();
     T getMax();
     T getSum();
-    double getAverage();
+    Double getAverage();
 }

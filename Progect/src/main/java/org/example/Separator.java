@@ -5,39 +5,39 @@ import java.util.List;
 
 public class Separator {
     public Separator(List<String> lines){
-        _longList = new ArrayList<>();
-        _doubleList = new ArrayList<>();
-        _stringList = new ArrayList<>();
+        longList = new ArrayList<>();
+        doubleList = new ArrayList<>();
+        stringList = new ArrayList<>();
         this.Separate(lines);
     }
     public List<Long> GetLong(){
-        return  _longList;
+        return  longList;
     }
     public List<Double> GetDouble(){
-        return  _doubleList;
+        return  doubleList;
     }
     public List<String> GetString(){
-        return _stringList;
+        return stringList;
     }
     private void Separate(List<String> lines){
         SeparateLong sapint = new SeparateLong();
         SeparateDouble sapflo = new SeparateDouble();
         if(lines != null||
-        !lines.isEmpty()){
+                !lines.isEmpty()){
             for (int i = 0; i < lines.size(); i++) {
-                if (sapint.IsMath(lines.get(i))) {
-                    _longList.add(sapint.getValue(lines.get(i)));
-                } else if (sapflo.IsMath(lines.get(i))) {
-                    _doubleList.add(sapflo.getValue(lines.get(i)));
+                if (sapint.isMatch(lines.get(i))) {
+                    longList.add(sapint.getValue(lines.get(i)));
+                } else if (sapflo.isMatch(lines.get(i))) {
+                    doubleList.add(sapflo.getValue(lines.get(i)));
                 } else {
                     if(!lines.get(i).isEmpty()){
-                        _stringList.add(lines.get(i));
+                        stringList.add(lines.get(i));
                     }
                 }
             }
         }
     }
-    private List<Long> _longList;
-    private List<Double> _doubleList;
-    private List<String> _stringList;
+    private List<Long> longList;
+    private List<Double> doubleList;
+    private List<String> stringList;
 }

@@ -6,58 +6,56 @@ import java.util.List;
 
 public class FullStatisticDouble implements INumberFullStatistic<Double> {
     public FullStatisticDouble(Separator separate){
-        _list = separate.GetDouble();
-        _infomin = _list.stream().min(Double::compare).orElseThrow();
-        _infomax = _list.stream().max(Double::compare).orElseThrow();
-        _infosum = _list.stream().mapToDouble(Double::doubleValue).sum();
-        _infoavg = _list.stream().mapToDouble(Double::doubleValue).average().orElseThrow();
-        _infosize = _list.size();
+        list = separate.GetDouble();
+        infomin = list.stream().min(Double::compare).orElseThrow();
+        infomax = list.stream().max(Double::compare).orElseThrow();
+        infosum = list.stream().mapToDouble(Double::doubleValue).sum();
+        infoavg = list.stream().mapToDouble(Double::doubleValue).average().orElseThrow();
+        infosize = list.size();
     }
 
     @Override
     public Double getMin() {
-        return _infomin;
+        return infomin;
     }
 
     @Override
     public Double getMax() {
-        return _infomax;
+        return infomax;
     }
 
     @Override
     public Double getSum() {
-        return _infosum;
+        return infosum;
     }
 
     @Override
-    public double getAverage() {
-        return _infoavg;
+    public Double getAverage() {
+        return infoavg;
     }
 
     @Override
-    public int getCountElements() {
-        return _infosize;
+    public Integer getCountElements() {
+        return infosize;
     }
 
     @Override
-    public String Statistic(){
+    public String statistic(){
         String txt = "\nСтатистика вещественных чисел\n";
         txt += "------------------------------------------\n";
-        txt += "Минимальное значение : " + _infomin;
-        txt += "\nМaксимальное значение : " + _infomax;
-        txt += "\nСумма всех значений : " + _infosum;
-        txt += "\nСреднее значение : " + _infoavg;
-        txt += "\nКоличество значений : " + _infosize;
+        txt += "Минимальное значение : " + infomin;
+        txt += "\nМaксимальное значение : " + infomax;
+        txt += "\nСумма всех значений : " + infosum;
+        txt += "\nСреднее значение : " + infoavg;
+        txt += "\nКоличество значений : " + infosize;
         return  txt;
     }
 
-    private Double _infomin;
-    private Double _infomax;
-    private Double _infosum;
-    private double _infoavg;
-    private int _infosize;
+    private Double infomin;
+    private Double infomax;
+    private Double infosum;
+    private Double infoavg;
+    private Integer infosize;
 
-    private List<Double> _list;
-
-
+    private List<Double> list;
 }

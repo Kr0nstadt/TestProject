@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class SeparateLong implements ICanSeparate<Long> {
     @Override
-    public boolean IsMath(String txt) {
+    public boolean isMatch(String txt) {
         if(txt == null||
                 txt.isEmpty()||
                 txt.length() == 0){
@@ -20,7 +20,7 @@ public class SeparateLong implements ICanSeparate<Long> {
         if(txt == null||
                 txt.isEmpty()||
                 txt.length() == 0 ||
-                !this.IsMath(txt)){
+                !this.isMatch(txt)){
             return res;
         }
         else {
