@@ -1,45 +1,51 @@
-package org.example;
+package org.example.statistic;
+
+import org.example.Separator;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class FullStatisticString implements IFillStatisticString {
+public class FullStatisticString implements IStringFullStaticstic {
     public FullStatisticString(Separator separator){
         _list = new ArrayList<>();
         _list = separator.GetString().stream()
                 .sorted(Comparator.comparingInt(String::length)).toList();
-        GetMin();
-        GetMax();
-        GetSize();
-    }
-    @Override
-    public void GetMin() {
-        _infomin = ((Integer)_list.getFirst().length()).toString();
+        _infomin = _list.getFirst().length();
+        _infomax = _list.getLast().length();
+        _infosize = _list.size();
+
     }
 
     @Override
-    public void GetMax() {
-        _infomax = ((Integer)_list.getLast().length()).toString();
+    public int getMinLength() {
+        return _infomin;
     }
 
     @Override
-    public void GetSize() {
-        _infosize = ((Integer)_list.size()).toString();
+    public int getMaxLength() {
+        return _infomax;
+    }
+
+    @Override
+    public int getCountElements() {
+        return _infosize;
     }
 
     @Override
     public String Statistic() {
-        String txt = "\nСтатистика строк ";
+        String txt = "\nСтатистика строк \n";
         txt += "------------------------------------------\n";
         txt += "Минимальное значение : " + _infomin;
         txt += "\nМaксимальное значение : " + _infomax;
         txt += "\nКоличество значений : " + _infosize;
         return txt;
     }
-    private String _infomin;
-    private String _infomax;
-    private String _infosize;
+    private int _infomin;
+    private int _infomax;
+    private int _infosize;
 
     private List<String> _list;
+
+
 }
