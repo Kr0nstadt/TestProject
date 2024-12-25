@@ -15,5 +15,21 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     public void addParameter(String parameter) {
 
     }
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj){
+            return  true;
+        }
+        if(obj == null ||
+                getClass() != obj.getClass()){
+            return false;
+        }
+        HandlerInputFiles other = (HandlerInputFiles)obj;
+        return this.equals(other);
+    }
+    @Override
+    public int hashCode(){
+        return 7;
+    }
     private List<File> files;
 }
