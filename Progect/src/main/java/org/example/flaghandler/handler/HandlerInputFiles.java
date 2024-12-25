@@ -2,6 +2,7 @@ package org.example.flaghandler.handler;
 
 import java.io.File;
 import java.util.List;
+import org.example.config.Configuration;
 
 public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
 
