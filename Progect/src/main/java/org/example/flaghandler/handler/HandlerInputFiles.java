@@ -5,7 +5,9 @@ import java.util.List;
 import org.example.config.Configuration;
 
 public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
-
+    public HandlerInputFiles(String flag){
+        
+    }
     @Override
     public void handle(Configuration config) {
 

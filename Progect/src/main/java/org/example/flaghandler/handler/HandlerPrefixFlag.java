@@ -1,6 +1,9 @@
 package org.example.flaghandler.handler;
 import org.example.config.Configuration;
 public class HandlerPrefixFlag implements IHandleConfig, IHandleWithParameters{
+    public HandlerPrefixFlag(String flag){
+
+    }
     @Override
     public void handle(Configuration config) {
 

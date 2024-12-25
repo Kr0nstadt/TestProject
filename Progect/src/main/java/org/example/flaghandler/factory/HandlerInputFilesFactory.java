@@ -1,9 +1,10 @@
 package org.example.flaghandler.factory;
+import org.example.flaghandler.handler.HandlerInputFiles;
 import org.example.flaghandler.handler.IHandleConfig;
 public class HandlerInputFilesFactory implements IFlagHandlerFactory{
     @Override
     public IHandleConfig createHandler(String flag) {
-        return null;
+        return new HandlerInputFiles(flag);
     }
 
     @Override
