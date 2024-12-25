@@ -10,6 +10,6 @@ public class HandlerPrefixFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return null;
+        return flag.contains("-p");
     }
 }

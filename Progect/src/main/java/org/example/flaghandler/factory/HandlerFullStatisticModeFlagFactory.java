@@ -8,6 +8,6 @@ public class HandlerFullStatisticModeFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return null;
+        return flag.contains("-f");
     }
 }

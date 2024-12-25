@@ -1,5 +1,6 @@
 package org.example.flaghandler.factory;
 import org.example.flaghandler.handler.IHandleConfig;
+
 public class HandlerAppendFlagFactory implements IFlagHandlerFactory{
     @Override
     public IHandleConfig createHandler(String flag) {
@@ -8,6 +9,6 @@ public class HandlerAppendFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return null;
+        return flag.contains("-a");
     }
 }
