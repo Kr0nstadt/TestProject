@@ -19,30 +19,18 @@ public class Setting {
     }
     private List<IHandleConfig> GetArgyment(String comand){
         List<IHandleConfig> list = new ArrayList<>();
-        HandlerAppendFlagFactory handlerAppendFlagFactory = new HandlerAppendFlagFactory();
-        HandlerFullStatisticModeFlagFactory handlerFullStatisticModeFlagFactory = new HandlerFullStatisticModeFlagFactory();
-        HandlerInputFilesFactory handlerInputFilesFactory = new HandlerInputFilesFactory();
-        HandlerOutputPathFlagFactory handlerOutputPathFlagFactory = new HandlerOutputPathFlagFactory();
-        HandlerPrefixFlagFactory handlerPrefixFlagFactory = new HandlerPrefixFlagFactory();
-        HandlerShortStatisticModeFlagFactory handlerShortStatisticModeFlagFactory = new HandlerShortStatisticModeFlagFactory();
+        List<IFlagHandlerFactory> listFactory = new ArrayList<>();
+        listFactory.add(new HandlerAppendFlagFactory());
+        listFactory.add(new HandlerFullStatisticModeFlagFactory());
+        listFactory.add(new HandlerInputFilesFactory());
+        listFactory.add(new HandlerOutputPathFlagFactory());
+        listFactory.add(new HandlerPrefixFlagFactory());
+        listFactory.add(new HandlerShortStatisticModeFlagFactory());
 
-        if(handlerAppendFlagFactory.isMatch(comand)){
-            list.add(handlerAppendFlagFactory.createHandler());
-        }
-        if(handlerFullStatisticModeFlagFactory.isMatch(comand)){
-            list.add(handlerFullStatisticModeFlagFactory.createHandler());
-        }
-        if(handlerInputFilesFactory.isMatch(comand)){
-            list.add(handlerInputFilesFactory.createHandler());
-        }
-        if(handlerOutputPathFlagFactory.isMatch(comand)){
-            list.add(handlerOutputPathFlagFactory.createHandler());
-        }
-        if(handlerPrefixFlagFactory.isMatch(comand)){
-            list.add(handlerPrefixFlagFactory.createHandler());
-        }
-        if(handlerShortStatisticModeFlagFactory.isMatch(comand)){
-            list.add(handlerShortStatisticModeFlagFactory.createHandler());
+        for(IFlagHandlerFactory factory : listFactory){
+            if(factory.isMatch(comand)){
+                list.add((factory.createHandler()));
+            }
         }
 
         return list;
