@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Configuration {
-    public Configuration getInstance(){
+    public static Configuration getInstance(){
         if(instance == null) {
             instance = new Configuration();
         }
@@ -60,5 +60,5 @@ public class Configuration {
     private Boolean append;
     private StatisticMode statisticMode;
     private List<File> inputFiles;
-    private Configuration instance;
+    private static Configuration instance;
 }
