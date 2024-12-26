@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Configuration {
-    public Configuration getInstance(){
+    public static Configuration getInstance(){
         return new Configuration();
     }
 

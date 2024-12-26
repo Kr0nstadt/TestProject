@@ -3,8 +3,8 @@ import org.example.flaghandler.handler.HandlerOutputPathFlag;
 import org.example.flaghandler.handler.IHandleConfig;
 public class HandlerOutputPathFlagFactory implements IFlagHandlerFactory{
     @Override
-    public IHandleConfig createHandler(String flag) {
-        return new HandlerOutputPathFlag(flag);
+    public IHandleConfig createHandler() {
+        return new HandlerOutputPathFlag();
     }
 
     @Override

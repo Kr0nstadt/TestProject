@@ -5,8 +5,8 @@ import org.example.flaghandler.handler.IHandleConfig;
 
 public class HandlerPrefixFlagFactory implements IFlagHandlerFactory{
     @Override
-    public IHandleConfig createHandler(String flag) {
-        return new HandlerPrefixFlag(flag);
+    public IHandleConfig createHandler() {
+        return new HandlerPrefixFlag();
     }
 
     @Override

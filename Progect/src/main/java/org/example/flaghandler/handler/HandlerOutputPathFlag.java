@@ -1,9 +1,7 @@
 package org.example.flaghandler.handler;
 import org.example.config.Configuration;
 public class HandlerOutputPathFlag implements IHandleConfig, IHandleWithParameters{
-    public HandlerOutputPathFlag(String flag){
 
-    }
     @Override
     public void handle(Configuration config) {
 

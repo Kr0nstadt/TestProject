@@ -3,8 +3,8 @@ import org.example.flaghandler.handler.HandlerInputFiles;
 import org.example.flaghandler.handler.IHandleConfig;
 public class HandlerInputFilesFactory implements IFlagHandlerFactory{
     @Override
-    public IHandleConfig createHandler(String flag) {
-        return new HandlerInputFiles(flag);
+    public IHandleConfig createHandler() {
+        return new HandlerInputFiles();
     }
 
     @Override

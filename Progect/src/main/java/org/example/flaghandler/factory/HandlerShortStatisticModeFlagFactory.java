@@ -3,7 +3,7 @@ import org.example.flaghandler.handler.HandlerShortStatisticModeFlag;
 import org.example.flaghandler.handler.IHandleConfig;
 public class HandlerShortStatisticModeFlagFactory implements IFlagHandlerFactory{
     @Override
-    public IHandleConfig createHandler(String flag) {
+    public IHandleConfig createHandler() {
         return new HandlerShortStatisticModeFlag();
     }
 
