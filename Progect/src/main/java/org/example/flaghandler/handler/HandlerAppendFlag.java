@@ -10,18 +10,14 @@ public class HandlerAppendFlag implements IHandleConfig{
 
     @Override
     public boolean equals(Object obj){
-        if(this == obj){
-            return  true;
-        }
         if(obj == null ||
-        getClass() != obj.getClass()){
+                getClass() != obj.getClass()){
             return false;
         }
-        HandlerAppendFlag other = (HandlerAppendFlag)obj;
-        return this.equals(other);
+        return true;
     }
     @Override
     public int hashCode(){
-        return 3;
+        return getClass().hashCode();
     }
 }

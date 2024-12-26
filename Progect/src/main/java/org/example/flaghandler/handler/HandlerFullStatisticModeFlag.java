@@ -10,18 +10,14 @@ public class HandlerFullStatisticModeFlag implements IHandleConfig{
     }
     @Override
     public boolean equals(Object obj){
-        if(this == obj){
-            return  true;
-        }
         if(obj == null ||
                 getClass() != obj.getClass()){
             return false;
         }
-        HandlerFullStatisticModeFlag other = (HandlerFullStatisticModeFlag)obj;
-        return this.equals(other);
+        return true;
     }
     @Override
     public int hashCode(){
-        return 5;
+        return getClass().hashCode();
     }
 }

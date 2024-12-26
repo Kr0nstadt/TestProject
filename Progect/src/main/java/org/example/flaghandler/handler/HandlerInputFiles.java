@@ -8,28 +8,31 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     
     @Override
     public void handle(Configuration config) {
-
+        for(File file : files){
+            config.addInputFile(file);
+        }
     }
 
     @Override
     public void addParameter(String parameter) {
-
+        String[] parts = parameter.split(" ");
+        for (String part : parts) {
+            if (part.endsWith(".txt")) {
+                files.add(new File(part));
+            }
+        }
     }
     @Override
     public boolean equals(Object obj){
-        if(this == obj){
-            return  true;
-        }
         if(obj == null ||
                 getClass() != obj.getClass()){
             return false;
         }
-        HandlerInputFiles other = (HandlerInputFiles)obj;
-        return this.equals(other);
+        return true;
     }
     @Override
     public int hashCode(){
-        return 7;
+        return getClass().hashCode();
     }
     private List<File> files;
 }

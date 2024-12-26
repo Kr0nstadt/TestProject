@@ -6,8 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Configuration {
-    public static Configuration getInstance(){
-        return new Configuration();
+    public Configuration getInstance(){
+        if(instance == null) {
+            instance = new Configuration();
+        }
+        return instance;
     }
 
     public void setOutputPath(Path path){
@@ -51,7 +54,6 @@ public class Configuration {
         statisticMode = StatisticMode.None;
         inputFiles = new ArrayList<>();
         outputPath = null;
-        instance = new Configuration();
     }
     private Path outputPath;
     private String prefix;
