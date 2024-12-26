@@ -48,13 +48,22 @@ public class Configuration {
         return inputFiles;
     }
 
+    public void setCommand(String command){
+        this.command = command;
+    }
+    public String getCommand(){
+        return command;
+    }
+
     private Configuration(){
         prefix = "";
         append = true;
         statisticMode = StatisticMode.None;
         inputFiles = new ArrayList<>();
         outputPath = null;
+        command ="";
     }
+    private String command;
     private Path outputPath;
     private String prefix;
     private Boolean append;

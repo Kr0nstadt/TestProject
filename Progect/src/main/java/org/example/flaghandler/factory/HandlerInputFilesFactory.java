@@ -9,6 +9,6 @@ public class HandlerInputFilesFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return null;
+        return true;
     }
 }

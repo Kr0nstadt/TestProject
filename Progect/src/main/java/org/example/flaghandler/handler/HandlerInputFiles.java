@@ -1,6 +1,7 @@
 package org.example.flaghandler.handler;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import org.example.config.Configuration;
 
@@ -8,6 +9,7 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     
     @Override
     public void handle(Configuration config) {
+        addParameter(config.getCommand());
         for(File file : files){
             config.addInputFile(file);
         }
@@ -17,8 +19,9 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     public void addParameter(String parameter) {
         String[] parts = parameter.split(" ");
         for (String part : parts) {
-            if (part.endsWith(".txt")) {
-                files.add(new File(part));
+            File temp = new File(part);
+            if(temp.exists()){
+                files.add(temp);
             }
         }
     }

@@ -10,7 +10,9 @@ import java.util.List;
 
 public class Setting {
     public Setting(String comand){
-        SettingConfiguration(GetArgyment(comand));
+        Configuration.getInstance().setCommand(comand);
+        List<IHandleConfig> list = GetArgyment(comand);
+        SettingConfiguration(list);
     }
     private void SettingConfiguration(List<IHandleConfig> list){
         for(IHandleConfig config : list){
@@ -19,17 +21,19 @@ public class Setting {
     }
     private List<IHandleConfig> GetArgyment(String comand){
         List<IHandleConfig> list = new ArrayList<>();
-        List<IFlagHandlerFactory> listFactory = new ArrayList<>();
-        listFactory.add(new HandlerAppendFlagFactory());
-        listFactory.add(new HandlerFullStatisticModeFlagFactory());
-        listFactory.add(new HandlerInputFilesFactory());
-        listFactory.add(new HandlerOutputPathFlagFactory());
-        listFactory.add(new HandlerPrefixFlagFactory());
-        listFactory.add(new HandlerShortStatisticModeFlagFactory());
+        if(!comand.isEmpty()){
+            List<IFlagHandlerFactory> listFactory = new ArrayList<>();
+            listFactory.add(new HandlerAppendFlagFactory());
+            listFactory.add(new HandlerFullStatisticModeFlagFactory());
+            listFactory.add(new HandlerInputFilesFactory());
+            listFactory.add(new HandlerOutputPathFlagFactory());
+            listFactory.add(new HandlerPrefixFlagFactory());
+            listFactory.add(new HandlerShortStatisticModeFlagFactory());
 
-        for(IFlagHandlerFactory factory : listFactory){
-            if(factory.isMatch(comand)){
-                list.add((factory.createHandler()));
+            for (IFlagHandlerFactory factory : listFactory) {
+                if (factory.isMatch(comand)) {
+                    list.add((factory.createHandler()));
+                }
             }
         }
 
