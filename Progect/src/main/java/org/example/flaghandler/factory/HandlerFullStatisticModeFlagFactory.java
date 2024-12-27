@@ -9,6 +9,6 @@ public class HandlerFullStatisticModeFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return flag.contains("-f");
+        return flag.equals("-f");
     }
 }

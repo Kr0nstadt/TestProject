@@ -9,6 +9,6 @@ public class HandlerShortStatisticModeFlagFactory implements IFlagHandlerFactory
 
     @Override
     public Boolean isMatch(String flag) {
-        return flag.contains("-s");
+        return flag.equals("-s");
     }
 }

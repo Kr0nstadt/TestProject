@@ -1,7 +1,7 @@
-package org.example;
+package org.example.separator;
 
-import org.example.separator.SeparateDouble;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SeparateDoubleTest {

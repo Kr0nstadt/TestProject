@@ -30,8 +30,9 @@ public class Configuration {
     public void setIsAppend(Boolean append){
         this.append = append;
     }
+
     public Boolean isAppend(){
-        return  append;
+        return append;
     }
 
     public void setStatisticMode(StatisticMode mode){
@@ -46,13 +47,6 @@ public class Configuration {
     }
     public List<File> getInputFiles(){
         return inputFiles;
-    }
-
-    public void setCommand(String command){
-        this.command = command;
-    }
-    public String getCommand(){
-        return command;
     }
 
     private Configuration(){

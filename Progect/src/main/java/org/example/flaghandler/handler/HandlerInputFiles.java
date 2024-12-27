@@ -1,6 +1,7 @@
 package org.example.flaghandler.handler;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import org.example.config.Configuration;
@@ -9,7 +10,6 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     
     @Override
     public void handle(Configuration config) {
-        addParameter(config.getCommand());
         for(File file : files){
             config.addInputFile(file);
         }
@@ -17,12 +17,12 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
 
     @Override
     public void addParameter(String parameter) {
-        String[] parts = parameter.split(" ");
-        for (String part : parts) {
-            File temp = new File(part);
-            if(temp.exists()){
-                files.add(temp);
-            }
+        File temp = new File(parameter);
+        if(temp.exists()){
+            files.add(temp);
+        }
+        else {
+            throw new RuntimeException(String.format("File %s not found", parameter));
         }
     }
     @Override
@@ -37,5 +37,5 @@ public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     public int hashCode(){
         return getClass().hashCode();
     }
-    private List<File> files;
+    private List<File> files = new ArrayList<>();
 }

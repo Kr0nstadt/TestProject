@@ -11,6 +11,6 @@ public class HandlerPrefixFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return flag.contains("-p");
+        return flag.equals("-p");
     }
 }

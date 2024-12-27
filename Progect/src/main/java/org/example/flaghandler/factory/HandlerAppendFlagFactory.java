@@ -10,6 +10,6 @@ public class HandlerAppendFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return flag.contains("-a");
+        return flag.equals("-a");
     }
 }

@@ -12,12 +12,7 @@ public class HandlerPrefixFlag implements IHandleConfig, IHandleWithParameters{
 
     @Override
     public void addParameter(String parameter) {
-        String[] paramArray = parameter.split(" ");
-        for(int i = 0; i < paramArray.length; i++){
-            if(paramArray[i] == "-p"){
-                prefix = paramArray[i + 1];
-            }
-        }
+        prefix = parameter;
     }
     @Override
     public boolean equals(Object obj){

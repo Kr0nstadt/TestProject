@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.separator.Separator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

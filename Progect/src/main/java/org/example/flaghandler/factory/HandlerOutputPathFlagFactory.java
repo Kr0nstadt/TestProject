@@ -9,6 +9,6 @@ public class HandlerOutputPathFlagFactory implements IFlagHandlerFactory{
 
     @Override
     public Boolean isMatch(String flag) {
-        return flag.contains("-o");
+        return flag.equals("-o");
     }
 }

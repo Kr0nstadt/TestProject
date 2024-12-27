@@ -1,6 +1,6 @@
 package org.example.statistic;
 
-import org.example.Separator;
+import org.example.separator.Separator;
 
 import java.util.ArrayList;
 import java.util.Comparator;

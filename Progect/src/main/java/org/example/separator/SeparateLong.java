@@ -1,8 +1,7 @@
-package org.example;
-
+package org.example.separator;
 import java.util.regex.Pattern;
 
-public class SeparateDouble implements ICanSeparate<Double>{
+public class SeparateLong implements ICanSeparate<Long> {
     @Override
     public boolean isMatch(String txt) {
         if(txt == null||
@@ -11,21 +10,22 @@ public class SeparateDouble implements ICanSeparate<Double>{
             return false;
         }
         else{
-            return Pattern.matches("^[-+]?\\d*\\.\\d+([eE][-+]?\\d+)?$",txt);
+            return Pattern.matches("^-?\\d+$",txt);
         }
     }
 
     @Override
-    public Double getValue(String txt) {
-        Double res = 0.0;
+    public Long getValue(String txt) {
+        Long res = 0L;
         if(txt == null||
-                txt.isEmpty() ||
+                txt.isEmpty()||
+                txt.length() == 0 ||
                 !this.isMatch(txt)){
             return res;
         }
         else {
             try {
-                res = Double.parseDouble(txt);
+                res = Long.parseLong(txt);
             } catch (NumberFormatException e) {
             }
             return res;

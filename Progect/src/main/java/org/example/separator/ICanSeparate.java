@@ -1,4 +1,4 @@
-package org.example;
+package org.example.separator;
 
 public interface ICanSeparate<T> {
     boolean isMatch(String txt);

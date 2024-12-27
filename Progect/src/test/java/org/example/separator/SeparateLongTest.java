@@ -1,6 +1,5 @@
-package org.example;
+package org.example.separator;
 
-import org.example.separator.SeparateLong;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

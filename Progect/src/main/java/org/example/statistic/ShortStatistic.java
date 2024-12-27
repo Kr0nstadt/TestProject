@@ -1,6 +1,6 @@
 package org.example.statistic;
 
-import org.example.Separator;
+import org.example.separator.Separator;
 
 public class ShortStatistic implements ICountElementsStaticstic{
     public ShortStatistic(Separator separator){

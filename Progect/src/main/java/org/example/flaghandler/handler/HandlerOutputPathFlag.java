@@ -12,12 +12,7 @@ public class HandlerOutputPathFlag implements IHandleConfig, IHandleWithParamete
 
     @Override
     public void addParameter(String parameter) {
-        String[] paramArray = parameter.split(" ");
-        for(int i = 0; i < paramArray.length; i++){
-            if(paramArray[i] == "-o"){
-                path = Path.of(paramArray[i + 1]);
-            }
-        }
+        path = Path.of(parameter);
     }
     @Override
     public boolean equals(Object obj){

@@ -5,7 +5,7 @@ import org.example.config.Configuration;
 public class HandlerAppendFlag implements IHandleConfig{
     @Override
     public void handle(Configuration config) {
-        config.setIsAppend(!config.isAppend());
+        config.setIsAppend(true);
     }
 
     @Override
