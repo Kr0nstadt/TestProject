@@ -54,10 +54,8 @@ public class Configuration {
         append = true;
         statisticMode = StatisticMode.None;
         inputFiles = new ArrayList<>();
-        outputPath = null;
-        command ="";
+        outputPath = Path.of("./");
     }
-    private String command;
     private Path outputPath;
     private String prefix;
     private Boolean append;

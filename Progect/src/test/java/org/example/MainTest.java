@@ -40,8 +40,7 @@ class MainTest {
         assertDoesNotThrow(() -> handlerInputFiles.addParameter("in2.txt"));
         expected.add(handlerInputFiles);
 
-        Collector collector = new Collector(args);
-        Set<IHandleConfig> handlers = collector.getHandlers(listFactory, args);
+        Set<IHandleConfig> handlers = getHandlers(listFactory, args);
 
         assertEquals(expected, handlers);
     }
@@ -59,10 +58,60 @@ class MainTest {
         String[] args = {
                 "-s", "-a", "-a", "-p", "sample-", "in1.txt",  "in2.txt"
         };
-        Collector collector = new Collector(args);
 
-        var thrown = assertThrows(IllegalArgumentException.class, () -> collector.getHandlers(listFactory, args));
+
+        var thrown = assertThrows(IllegalArgumentException.class, () -> getHandlers(listFactory, args));
 
         assertEquals(thrown.getMessage(), "Duplicate flag -a");
+    }
+
+    private Set<IHandleConfig> getHandlers(List<IFlagHandlerFactory> factories, String[] args) {
+        boolean isReadParameter = false;
+        boolean isStatisticOn = false;
+        Set<IHandleConfig> handlers = new HashSet<>();
+        IHandleWithParameters currentHandlerWithParameters = null;
+
+        for(String arg : args) {
+            if(isReadParameter) {
+                if(!(currentHandlerWithParameters instanceof HandlerInputFiles)) {
+                    isReadParameter = false;
+                }
+                currentHandlerWithParameters.addParameter(arg);
+            }
+            else {
+                IHandleConfig currentHandler = factories.stream()
+                        .filter(factory -> factory.isMatch(arg))
+                        .findFirst()
+                        .orElseThrow()
+                        .createHandler();
+
+                if(currentHandler instanceof IHandleWithParameters handlerWithParameters) {
+                    currentHandlerWithParameters = handlerWithParameters;
+                    isReadParameter = true;
+                }
+
+                if(currentHandlerWithParameters instanceof HandlerInputFiles) {
+                    currentHandlerWithParameters.addParameter(arg);
+                }
+
+                if(handlers.contains(currentHandler)) {
+                    throw new IllegalArgumentException("Duplicate flag " + arg);
+                }
+                if(currentHandler instanceof HandlerFullStatisticModeFlag ||
+                        currentHandler instanceof HandlerShortStatisticModeFlag){
+                    if(isStatisticOn) {
+                        throw new IllegalArgumentException("Duplicate statistic mode " + arg);
+                    }
+                    else {
+                        isStatisticOn = true;
+                    }
+
+                }
+                handlers.add(currentHandler);
+
+            }
+        }
+
+        return handlers;
     }
 }

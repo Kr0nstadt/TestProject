@@ -25,14 +25,14 @@ public class Collector {
             for(IHandleConfig handler : handlers) {
                 handler.handle(configuration);
             }
-
+            CollectOutFile collectOutFile = new CollectOutFile();
             //TODO: Основной алгоритм
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
-    public Set<IHandleConfig> getHandlers(List<IFlagHandlerFactory> factories, String[] args) {
+    private Set<IHandleConfig> getHandlers(List<IFlagHandlerFactory> factories, String[] args) {
         boolean isReadParameter = false;
         boolean isStatisticOn = false;
         Set<IHandleConfig> handlers = new HashSet<>();
