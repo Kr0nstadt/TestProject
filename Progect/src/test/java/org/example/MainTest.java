@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.collect.Collector;
 import org.example.flaghandler.factory.*;
 import org.example.flaghandler.handler.*;
 import org.junit.jupiter.api.Test;
@@ -39,7 +40,8 @@ class MainTest {
         assertDoesNotThrow(() -> handlerInputFiles.addParameter("in2.txt"));
         expected.add(handlerInputFiles);
 
-        Set<IHandleConfig> handlers = Main.getHandlers(listFactory, args);
+        Collector collector = new Collector(args);
+        Set<IHandleConfig> handlers = collector.getHandlers(listFactory, args);
 
         assertEquals(expected, handlers);
     }
@@ -57,8 +59,9 @@ class MainTest {
         String[] args = {
                 "-s", "-a", "-a", "-p", "sample-", "in1.txt",  "in2.txt"
         };
+        Collector collector = new Collector(args);
 
-        var thrown = assertThrows(IllegalArgumentException.class, () -> Main.getHandlers(listFactory, args));
+        var thrown = assertThrows(IllegalArgumentException.class, () -> collector.getHandlers(listFactory, args));
 
         assertEquals(thrown.getMessage(), "Duplicate flag -a");
     }
