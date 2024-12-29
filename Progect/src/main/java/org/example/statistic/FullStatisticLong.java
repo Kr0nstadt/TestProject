@@ -41,7 +41,7 @@ public class FullStatisticLong implements INumberFullStatistic<Long> {
 
     @Override
     public String statistic(){
-        String txt = "\nСтатистика чисел\n";
+        String txt = "\n\nСтатистика чисел\n";
         txt += "------------------------------------------\n";
         txt += "Минимальное значение : " + infomin;
         txt += "\nМaксимальное значение : " + infomax;

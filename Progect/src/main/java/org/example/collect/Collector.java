@@ -1,13 +1,21 @@
 package org.example.collect;
 
 import org.example.configFlaghander.Configuration;
+import org.example.configFlaghander.StatisticMode;
 import org.example.flaghandler.factory.*;
 import org.example.flaghandler.handler.*;
+import org.example.separator.Separator;
+import org.example.statistic.FullStatisticDouble;
+import org.example.statistic.FullStatisticLong;
+import org.example.statistic.FullStatisticString;
+import org.example.statistic.ShortStatistic;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Collector {
     public Collector(String[] args){
@@ -26,12 +34,33 @@ public class Collector {
                 handler.handle(configuration);
             }
             CollectOutFile collectOutFile = new CollectOutFile();
-            CollectorConsole collectorConsole = new CollectorConsole();
-            System.out.println(collectorConsole.toString());
+            System.out.println(MakeStatistic());
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    private String MakeStatistic(){
+        String res = "";
+        Configuration configuration = Configuration.getInstance();
+        Separator separator = new Separator(CollectOutFile.ReadFile(configuration.getInputFiles()));
+        if(configuration.getStatisticMode() == StatisticMode.None){
+            res = "Вид статистики не выбран";
+        }
+        if(configuration.getStatisticMode() == StatisticMode.ShortMode){
+            ShortStatistic statistic = new ShortStatistic(separator);
+            res = statistic.statistic();
+        }
+        if(configuration.getStatisticMode() == StatisticMode.FullMode){
+            FullStatisticLong statisticLong = new FullStatisticLong(separator);
+            FullStatisticString statisticString = new FullStatisticString(separator);
+            FullStatisticDouble statisticDouble = new FullStatisticDouble(separator);
+
+            res = statisticDouble.statistic() +
+                    statisticLong.statistic() +
+                    statisticString.statistic();
+        }
+        return res;
     }
     private Set<IHandleConfig> getHandlers(List<IFlagHandlerFactory> factories, String[] args) {
         boolean isReadParameter = false;

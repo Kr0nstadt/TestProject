@@ -34,7 +34,7 @@ public class FullStatisticString implements IStringFullStaticstic {
 
     @Override
     public String statistic() {
-        String txt = "\nСтатистика строк \n";
+        String txt = "\n\nСтатистика строк \n";
         txt += "------------------------------------------\n";
         txt += "Минимальное значение : " + infomin;
         txt += "\nМaксимальное значение : " + infomax;

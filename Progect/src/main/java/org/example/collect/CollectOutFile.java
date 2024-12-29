@@ -3,27 +3,58 @@ package org.example.collect;
 import org.example.configFlaghander.Configuration;
 import org.example.separator.Separator;
 
-import java.io.File;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CollectOutFile {
     public CollectOutFile(){
         Configuration configuration = Configuration.getInstance();
-        Separator separator = new Separator(configuration.getInputFiles()
-                .stream().map(File::getAbsolutePath)
-                .collect(Collectors.toList()));
+        Separator separator = new Separator(ReadFile(configuration.getInputFiles()));
 
-        MakeFile(separator.GetDouble().stream()
-                .map(String::valueOf)
-                .collect(Collectors.toList()), "float.txt");
-        MakeFile(separator.GetLong().stream()
-                .map(String::valueOf)
-                .collect(Collectors.toList()), "integer.txt");
-        MakeFile(separator.GetString(),"string.txt");
+        if(!separator.GetDouble().isEmpty()){
+            MakeFile(separator.GetDouble().stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.toList()), "float.txt");
+        }
+        if(!separator.GetLong().isEmpty())
+        {
+            MakeFile(separator.GetLong().stream()
+                    .map(String::valueOf)
+                    .collect(Collectors.toList()), "integer.txt");
+        }
+        if(!separator.GetString().isEmpty())
+        {
+            MakeFile(separator.GetString(), "string.txt");
+        }
+    }
+    public static   List<String> ReadFile(List<File> files){
+        List<String> allLines = new ArrayList<>();
+        for (File file : files) {
+            try {
+                allLines.addAll(readLinesFromFile(file));
+            } catch (IOException e) {
+                System.err.println("Ошибка при чтении файла: " + file.getName());
+            }
+        }
+        return allLines;
+    }
+    private static List<String> readLinesFromFile(File file) throws IOException {
+        List<String> lines = new ArrayList<>();
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                lines.add(line);
+            }
+        }
+
+        return lines;
     }
     private void MakeFile(List<String> array, String valueType){
         try{
