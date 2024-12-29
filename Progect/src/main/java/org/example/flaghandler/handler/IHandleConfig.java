@@ -1,6 +1,6 @@
 package org.example.flaghandler.handler;
 
-import org.example.config.Configuration;
+import org.example.configFlaghander.Configuration;
 
 public interface IHandleConfig {
     public void handle(Configuration config);

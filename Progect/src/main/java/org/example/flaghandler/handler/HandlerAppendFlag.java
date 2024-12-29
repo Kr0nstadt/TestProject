@@ -1,11 +1,11 @@
 package org.example.flaghandler.handler;
 
-import org.example.config.Configuration;
+import org.example.configFlaghander.Configuration;
 
 public class HandlerAppendFlag implements IHandleConfig{
     @Override
     public void handle(Configuration config) {
-        config.setIsAppend(true);
+        config.setIsAppend(false);
     }
 
     @Override

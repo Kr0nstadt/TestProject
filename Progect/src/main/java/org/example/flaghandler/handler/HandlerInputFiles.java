@@ -1,10 +1,9 @@
 package org.example.flaghandler.handler;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
-import org.example.config.Configuration;
+import org.example.configFlaghander.Configuration;
 
 public class HandlerInputFiles implements IHandleConfig, IHandleWithParameters{
     

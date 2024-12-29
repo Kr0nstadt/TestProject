@@ -1,7 +1,5 @@
 package org.example.flaghandler.handler;
-import org.example.config.Configuration;
-
-import java.nio.file.Path;
+import org.example.configFlaghander.Configuration;
 
 public class HandlerPrefixFlag implements IHandleConfig, IHandleWithParameters{
 

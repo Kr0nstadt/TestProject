@@ -1,6 +1,6 @@
 package org.example.collect;
 
-import org.example.config.Configuration;
+import org.example.configFlaghander.Configuration;
 import org.example.flaghandler.factory.*;
 import org.example.flaghandler.handler.*;
 

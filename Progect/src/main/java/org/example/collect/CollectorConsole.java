@@ -1,7 +1,7 @@
 package org.example.collect;
 
-import org.example.config.Configuration;
-import org.example.config.StatisticMode;
+import org.example.configFlaghander.Configuration;
+import org.example.configFlaghander.StatisticMode;
 import org.example.separator.Separator;
 import org.example.statistic.FullStatisticDouble;
 import org.example.statistic.FullStatisticLong;
