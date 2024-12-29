@@ -1,11 +1,10 @@
-package org.example;
+package org.example.separator;
 
-import org.example.separator.Separator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SeparatorTest {
     @Test
