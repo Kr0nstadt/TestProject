@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: C:\Users\karpo\OneDrive\Рабочий стол\TestProgect\
+ Progect\src\main\java\orgMain.java
+
