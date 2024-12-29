@@ -26,7 +26,8 @@ public class Collector {
                 handler.handle(configuration);
             }
             CollectOutFile collectOutFile = new CollectOutFile();
-            //TODO: Основной алгоритм
+            CollectorConsole collectorConsole = new CollectorConsole();
+            System.out.println(collectorConsole.toString());
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
