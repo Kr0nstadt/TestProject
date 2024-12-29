@@ -1,6 +1,5 @@
-package org.example;
+package org.example.collect;
 
-import org.example.collect.Collector;
 import org.example.flaghandler.factory.*;
 import org.example.flaghandler.handler.*;
 import org.junit.jupiter.api.Test;
@@ -12,8 +11,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
-
+class CollectorTest {
     @Test
     void testGetHandlers() {
         List<IFlagHandlerFactory> listFactory = new ArrayList<>();
