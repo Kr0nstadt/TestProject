@@ -1,7 +1,7 @@
 package org.example.collect;
 
-import org.example.configFlaghander.Configuration;
-import org.example.configFlaghander.StatisticMode;
+import org.example.config.Configuration;
+import org.example.config.StatisticMode;
 import org.example.flaghandler.factory.*;
 import org.example.flaghandler.handler.*;
 import org.example.separator.Separator;
@@ -10,12 +10,11 @@ import org.example.statistic.FullStatisticLong;
 import org.example.statistic.FullStatisticString;
 import org.example.statistic.ShortStatistic;
 
-import java.io.File;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Collector {
     public Collector(String[] args){
@@ -56,11 +55,11 @@ public class Collector {
             FullStatisticString statisticString = new FullStatisticString(separator);
             FullStatisticDouble statisticDouble = new FullStatisticDouble(separator);
 
-            res = statisticDouble.statistic() +
-                    statisticLong.statistic() +
-                    statisticString.statistic();
+            if(!separator.GetDouble().isEmpty()){res += statisticDouble.statistic();}
+            if(!separator.GetLong().isEmpty()){res += statisticLong.statistic();}
+            if(!separator.GetString().isEmpty()){res += statisticString.statistic();}
         }
-        return res;
+        return new String(res.getBytes(Charset.defaultCharset()));
     }
     private Set<IHandleConfig> getHandlers(List<IFlagHandlerFactory> factories, String[] args) {
         boolean isReadParameter = false;

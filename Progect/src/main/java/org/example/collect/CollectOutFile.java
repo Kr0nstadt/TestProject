@@ -1,9 +1,10 @@
 package org.example.collect;
 
-import org.example.configFlaghander.Configuration;
+import org.example.config.Configuration;
 import org.example.separator.Separator;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -39,7 +40,8 @@ public class CollectOutFile {
             try {
                 allLines.addAll(readLinesFromFile(file));
             } catch (IOException e) {
-                System.err.println("Ошибка при чтении файла: " + file.getName());
+                String txt = new String("Ошибка при чтении файла: ".getBytes(Charset.defaultCharset()));
+                System.err.println(txt + file.getName());
             }
         }
         return allLines;

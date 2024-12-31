@@ -1,4 +1,4 @@
-package org.example.configFlaghander;
+package org.example.config;
 
 public enum StatisticMode {
     None,

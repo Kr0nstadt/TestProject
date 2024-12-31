@@ -2,16 +2,26 @@ package org.example.statistic;
 
 import org.example.separator.Separator;
 
+import java.nio.charset.Charset;
 import java.util.List;
 
 public class FullStatisticLong implements INumberFullStatistic<Long> {
     public FullStatisticLong(Separator separate){
-        list = separate.GetLong();
-        infomin = list.stream().min(Long::compare).orElseThrow();
-        infomax = list.stream().max(Long::compare).orElseThrow();
-        infosum = list.stream().mapToLong(Long::longValue).sum();
-        infoavg = list.stream().mapToLong(Long::longValue).average().orElseThrow();
-        infosize = list.size();
+        if(!separate.GetLong().isEmpty()){
+            list = separate.GetLong();
+            infomin = list.stream().min(Long::compare).orElseThrow();
+            infomax = list.stream().max(Long::compare).orElseThrow();
+            infosum = list.stream().mapToLong(Long::longValue).sum();
+            infoavg = list.stream().mapToLong(Long::longValue).average().orElseThrow();
+            infosize = list.size();
+        }
+        else {
+            infomin = 0L;
+            infomax = 0L;
+            infosum = 0L;
+            infoavg = 0D;
+            infosize = 0;
+        }
     }
 
     @Override
@@ -48,7 +58,7 @@ public class FullStatisticLong implements INumberFullStatistic<Long> {
         txt += "\nСумма всех значений : " + infosum;
         txt += "\nСреднее значение : " + infoavg;
         txt += "\nКоличество значений : " + infosize;
-        return  txt;
+        return new String(txt.getBytes(Charset.defaultCharset()));
     }
 
     private Long infomin;

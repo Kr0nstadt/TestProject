@@ -1,7 +1,7 @@
 package org.example.flaghandler.handler;
 
-import org.example.configFlaghander.Configuration;
-import org.example.configFlaghander.StatisticMode;
+import org.example.config.Configuration;
+import org.example.config.StatisticMode;
 
 public class HandlerShortStatisticModeFlag implements IHandleConfig{
     @Override

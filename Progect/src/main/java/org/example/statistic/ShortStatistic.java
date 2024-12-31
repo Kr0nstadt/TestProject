@@ -2,6 +2,8 @@ package org.example.statistic;
 
 import org.example.separator.Separator;
 
+import java.nio.charset.Charset;
+
 public class ShortStatistic implements ICountElementsStaticstic{
     public ShortStatistic(Separator separator){
         count = separator.GetString().size()
@@ -15,7 +17,8 @@ public class ShortStatistic implements ICountElementsStaticstic{
 
     @Override
     public String statistic() {
-        return "Кол-во элементов : " + count.toString();
+        String txt = new String("Кол-во элементов : ".getBytes(Charset.defaultCharset()));
+        return txt+ count.toString();
     }
     private Integer count;
 }

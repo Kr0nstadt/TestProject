@@ -1,4 +1,4 @@
-package org.example.configFlaghander;
+package org.example.config;
 
 import java.io.File;
 import java.nio.file.Path;

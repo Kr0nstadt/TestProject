@@ -2,6 +2,7 @@ package org.example.statistic;
 
 import org.example.separator.Separator;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -39,7 +40,7 @@ public class FullStatisticString implements IStringFullStaticstic {
         txt += "Минимальное значение : " + infomin;
         txt += "\nМaксимальное значение : " + infomax;
         txt += "\nКоличество значений : " + infosize;
-        return txt;
+        return  new String(txt.getBytes(Charset.defaultCharset()));
     }
     private Integer infomin;
     private Integer infomax;

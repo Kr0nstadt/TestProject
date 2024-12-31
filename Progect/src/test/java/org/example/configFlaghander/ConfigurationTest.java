@@ -1,5 +1,7 @@
 package org.example.configFlaghander;
 
+import org.example.config.Configuration;
+import org.example.config.StatisticMode;
 import org.example.flaghandler.factory.*;
 import org.example.flaghandler.handler.*;
 import org.junit.jupiter.api.Test;

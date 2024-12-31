@@ -1,5 +1,5 @@
 package org.example.flaghandler.handler;
-import org.example.configFlaghander.Configuration;
+import org.example.config.Configuration;
 
 import java.nio.file.Path;
 
