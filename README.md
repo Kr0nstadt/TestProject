@@ -1,4 +1,4 @@
-# TestProgect
+# TestProject
 Версии :
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
